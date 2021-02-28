@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Client;
-use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,14 +41,3 @@ Route::get('client', function(){
     return $client;
 });
 
-Route::get('post/add', function(){
-    DB::table('posts')->insert([
-        'title' => 'Harry Potter', 
-        'body' => 'Minerva McGonagall is my absolute favorite Harry Potter character.'
-    ]);
-});
-
-Route::get('post', function(){
-    $post = Post::find(1);
-    return $post;
-});
