@@ -3,7 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
+use App\Models\Blog;
 use App\Models\Client;
+use App\Models\Post;
+
+
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +46,23 @@ Route::get('client', function(){
     return $client;
 });
 
+Route::get('post/add', function(){
+    DB::table('postss')->insert([
+        'title' => 'Harry Potter', 
+        'body' => 'Minerva McGonagall is my absolute favorite Harry Potter character.',
+    ]);
+});
+Route::get('post', function(){
+    $post = Post::find(1);
+    return $post;
+});
+
+Route::get('blog/add', function(){
+    DB::table('blog')->insert([
+        'name' => 'Nurai', 
+        'surname' => 'Samenova',
+        'age' => 18
+    ]);
+});
+
+Route::get('blog', [BlogController::class, 'index']);
