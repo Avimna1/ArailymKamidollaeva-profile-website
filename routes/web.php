@@ -64,7 +64,3 @@ Route::get('blog/add', function(){
         'age' => 18
     ]);
 });
-Route::get('blog', function(){
-    $blog = Blog::find(1);
-    return $blog;
-});
