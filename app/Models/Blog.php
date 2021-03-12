@@ -9,6 +9,6 @@ class Blog extends Model
 {
     use HasFactory;
      
-    protected $table = "blogs";
+    protected $table = "blog";
 }
 
