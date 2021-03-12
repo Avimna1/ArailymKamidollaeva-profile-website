@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\Client;
 use App\Models\Post;
-use App\Models\Blog;
 
 use App\Http\Controllers\BlogController;
 
@@ -55,12 +54,4 @@ Route::get('post/add', function(){
 Route::get('post', function(){
     $post = Post::find(1);
     return $post;
-});
-
-Route::get('blog/add', function(){
-    DB::table('blog')->insert([
-        'name' => 'Nurai', 
-        'surname' => 'Samenova',
-        'age' => 18
-    ]);
 });
