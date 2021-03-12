@@ -3,10 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
-use App\Models\Blog;
+
 use App\Models\Client;
 use App\Models\Post;
-
+use App\Models\Blog;
 
 use App\Http\Controllers\BlogController;
 
@@ -64,5 +64,7 @@ Route::get('blog/add', function(){
         'age' => 18
     ]);
 });
-
-Route::get('blog', [BlogController::class, 'index']);
+Route::get('blog', function(){
+    $blog = Blog::find(1);
+    return $blog;
+});
