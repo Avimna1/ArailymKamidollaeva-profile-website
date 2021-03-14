@@ -10,6 +10,7 @@ use App\Models\Blog;
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ClientController;
 
 
 /*
@@ -43,10 +44,8 @@ Route::get('client/add', function(){
     ]);
 });
 
-Route::get('client', function(){
-    $client = Client::find(1);
-    return $client;
-});
+Route::get('client', [ClientController::class, 'index']);
+
 
 Route::get('post/add', function(){
     DB::table('postss')->insert([
