@@ -9,6 +9,7 @@ use App\Models\Post;
 use App\Models\Blog;
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\PostController;
 
 
 /*
@@ -53,10 +54,14 @@ Route::get('post/add', function(){
         'body' => 'Minerva McGonagall is my absolute favorite Harry Potter character.',
     ]);
 });
-Route::get('post', function(){
-    $post = Post::find(1);
-    return $post;
+Route::get('post', [PostController::class, 'index']);
+Route::get('post/create', function(){
+    return view('post.create');
 });
+Route::post('post/create', [PostController::class, 'store'])->name('add-post');
+
+Route::get('post/{id}', [PostController::class, 'get_post']);
+
 
 Route::get('blog/add', function(){
     DB::table('blog')->insert([
@@ -72,3 +77,5 @@ Route::get('blog/create', function(){
 });
 
 Route::post('blog/create', [BlogController::class, 'store'])->name('add-blog');
+
+Route::get('blog/{id}', [BlogController::class, 'get_blog']);
