@@ -50,11 +50,13 @@ Route::get('client/create', function(){
 });
 
 Route::post('client/create', [ClientController::class, 'store'])->name('add-client');
+Route::get('client/{id}', [ClientController::class, 'get_client']);
 
 Route::get('post/add', function(){
     DB::table('postss')->insert([
-        'title' => 'Harry Potter', 
-        'body' => 'Minerva McGonagall is my absolute favorite Harry Potter character.',
+        'name' => 'Harry', 
+        'surname' => 'Potter',
+        'age' => 11
     ]);
 });
 Route::get('post', [PostController::class, 'index']);

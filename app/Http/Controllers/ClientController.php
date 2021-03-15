@@ -23,4 +23,13 @@ class ClientController extends Controller
 
         return back();
     }
+
+    public function get_client($id){
+        $client = Client::find($id);
+
+        if ($client == null)
+              return responce(['message'=>'client not found'], 500);
+
+        return view('client.detail')->with(['client' => $client]);
+    }
 }
