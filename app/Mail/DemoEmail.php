@@ -1,26 +1,34 @@
 <?php
-
+ 
 namespace App\Mail;
-
+ 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-
+use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Http\Controllers\MailController;
+ 
 class DemoEmail extends Mailable
 {
     use Queueable, SerializesModels;
-
+     
+    /**
+     * The demo object instance.
+     *
+     * @var Demo
+     */
+    public $demo;
+ 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($demo)
     {
-        //
+        $this->demo = $demo;
     }
-
+ 
     /**
      * Build the message.
      *
@@ -28,6 +36,17 @@ class DemoEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->from('avimna4@gmail.com')
+                    ->view('mails.demo')
+                    ->text('mails.demo_plain')
+                    ->with(
+                      [
+                            'testVarOne' => '1',
+                            'testVarTwo' => '2',
+                      ]);
+                      /*->attach(public_path('/images').'/demo.jpg', [
+                              'as' => 'demo.jpg',
+                              'mime' => 'image/jpeg',
+                      ])*/
     }
 }

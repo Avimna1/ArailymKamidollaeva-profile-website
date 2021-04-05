@@ -8,11 +8,13 @@ use App\Models\Client;
 use App\Models\Post;
 use App\Models\Blog;
 use App\Models\Form;
+use App\Models\Mail;
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,7 +92,7 @@ Route::get('form/add', function(){
     DB::table('forms')->insert([
         'name' => 'Arailym',
         'surname' => 'Kamidollaeva',
-        'email' => 'akamidollaeva@bk.ru',
+        'email' => 'avimna4@gmail.com',
         'image' => ' '    
         ]);
 });
@@ -101,3 +103,5 @@ Route::get('form/create', function(){
 });
 
 Route::post('form/create', [FormController::class, 'store'])->name('add-form');
+
+Route::get('mail/send', [MailController::class, 'send']);
