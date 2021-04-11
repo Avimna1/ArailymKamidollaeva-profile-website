@@ -105,3 +105,8 @@ Route::get('form/create', function(){
 Route::post('form/create', [FormController::class, 'store'])->name('add-form');
 
 Route::get('mail/send', [MailController::class, 'send']);
+
+Route::get('/home/{lang}', function ($lang){
+    App::setlocale($lang);
+    return view('home');
+});
